@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error-message { color: red; font-size: 0.875em; display: none; }
+        .is-invalid + .error-message { display: block; }
+        body { background-color: #f8f9fa; }
+        .form-container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">Swan Solution Hotel System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view.html">View Submissions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="form-container">
+                    <h2 class="mb-4 text-center">Guest Registration Form</h2>
+                    <div id="messageBox"></div>
+
+                    <form id="registrationForm" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                <div class="error-message">Name must be at least 3 characters.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phoneNumber" class="form-label">Phone Number *</label>
+                                <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                                <div class="error-message">Phone must be exactly 10 digits.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="emailAddress" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
+                                <div class="error-message">Enter a valid email address.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="aadharCard" class="form-label">Aadhar Card Number *</label>
+                                <input type="number" class="form-control" id="aadharCard" name="aadharCard" required>
+                                <div class="error-message">Aadhar must be exactly 12 digits.</div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">Address *</label>
+                                <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
+                                <div class="error-message">Address details cannot be empty.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="checkInDate" class="form-label">Check-in Date *</label>
+                                <input type="date" class="form-control" id="checkInDate" name="checkInDate" required>
+                                <div class="error-message">Must be a valid future date.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="checkOutDate" class="form-label">Check-out Date *</label>
+                                <input type="date" class="form-control" id="checkOutDate" name="checkOutDate" required>
+                                <div class="error-message">Must be a valid future date & after check-in.</div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="noOfAdults" class="form-label">No. of Adults *</label>
+                                <input type="number" class="form-control" id="noOfAdults" name="noOfAdults" min="1" required>
+                                <div class="error-message">Provide a valid number of adults.</div>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="purpose" class="form-label">Purpose of visit *</label>
+                                <textarea class="form-control" id="purpose" name="purpose" rows="1" required></textarea>
+                                <div class="error-message">Purpose of visit is required.</div>
+                            </div>
+
+                            <div class="col-12 text-center mt-4">
+                                <button type="submit" class="btn btn-primary px-5 py-2">Submit Registration</button>
+                                <button type="button" id="resetBtn" class="btn btn-secondary px-5 py-2 ms-2">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.css"></script>
+    <script type="module">
+        import { CustomerFormHandler } from './assets/js/CustomerFormHandler.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            new CustomerFormHandler('registrationForm');
+        });
+    </script>
+</body>
+</html>

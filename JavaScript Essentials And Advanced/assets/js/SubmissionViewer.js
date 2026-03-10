@@ -1,6 +1,4 @@
-import { getItem, setItem, showMessage } from './utils.js';
-
-export class SubmissionViewer {
+class SubmissionViewer {
     constructor(tableBodyId, searchInputId) {
         this.tableBody = document.getElementById(tableBodyId);
         this.searchInput = document.getElementById(searchInputId);

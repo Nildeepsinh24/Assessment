@@ -1,4 +1,4 @@
-export const setItem = (key, value) => {
+const setItem = (key, value) => {
     try {
         localStorage.setItem(key, JSON.stringify(value));
     } catch (e) {
@@ -6,7 +6,7 @@ export const setItem = (key, value) => {
     }
 };
 
-export const getItem = (key) => {
+const getItem = (key) => {
     try {
         const item = localStorage.getItem(key);
         return item ? JSON.parse(item) : [];
@@ -16,15 +16,15 @@ export const getItem = (key) => {
     }
 };
 
-export const showMessage = (msg, type = 'success', containerId = 'messageBox') => {
+const showMessage = (msg, type = 'success', containerId = 'messageBox') => {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
+
     container.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
         ${msg}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
-    
+
     // Auto dismiss after 3 seconds
     setTimeout(() => {
         container.innerHTML = '';

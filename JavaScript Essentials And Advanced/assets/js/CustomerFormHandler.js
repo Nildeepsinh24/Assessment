@@ -1,6 +1,4 @@
-import { setItem, getItem, showMessage } from './utils.js';
-
-export class CustomerFormHandler {
+class CustomerFormHandler {
     constructor(formId) {
         this.form = document.getElementById(formId);
         if (!this.form) return;
